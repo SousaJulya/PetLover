@@ -1,0 +1,361 @@
+usuariosA = [['Julya', '123','A']] #A de adiministradores
+usuariosC =[] #C de clientes
+pets =[] 
+atendimento =[]
+servicos =[]
+datas =[]
+#print(usuariosA)
+while True:
+    login = False
+    if len(usuariosA) == 0:
+        print('Não há usuários cadastrados.\nCadastre um usuário')
+        nomeUsuario = input("Nome de login: ")
+        senha = input("Digite uma senha forte:")
+        usuariosA.append([nomeUsuario,senha,'A'])
+        login = True
+    else:
+        nomeUsuario = input('Digite o nome de usuário:')
+        senha = input("Digite uma senha forte:")
+        for i in range(len(usuariosA)):
+            if nomeUsuario == usuariosA[i][0]:
+                if senha == usuariosA[i][1]:
+                    print("Usuario Autenticado!\n")
+                    login = True
+                    break
+    if login:
+        break
+    else:
+        print("Usuário ou senha inválidos!\n")
+while True:
+    print("PET SHOP PATAS & PÊLOS.\n")
+    print("1.Cadastros")
+    print("2.Atendimentos")
+    print("3-Consultas/Relatorios")
+    print("4.Sair")
+
+    opcao = input("\nSelecione uma opção:")
+
+    if opcao == '1':
+        while True:
+            print("\nCadastros:\n")
+            print("1.Usuarios (Administrador)")
+            print("2.Clientes")
+            print("3.Pets")
+            print("4.Serviços (Administrador)")
+            print("5.Voltar ao Menu Principal")
+
+            opcao = input("\nSelecione uma opção:")
+
+            if opcao == '1':
+                while True:
+                    print("\nUsuarios (Administrador)\n")
+                    print("1.Cadastrar novo Administrador")
+                    print("2.Atualizar")
+                    print("3.Apagar")
+                    print("4.Consultar")
+                    print("5.Voltar ao 'Menu Cadastros'\n")
+
+                    opcao = input("\nSelecione uma opção:")
+                    if opcao == '1':
+                        nomeUsuario = input("Nome de login: ")
+                        senha = input("Digite uma senha forte:")
+                        usuariosA.append([nomeUsuario,senha,'A'])
+                        print("Usuario Cadastrado!")
+
+                    elif opcao == '2':  
+                        atualizar = input("Digite o nome de login do usuário que deseja atualizar: ")
+
+                        usuario_encontrado = False
+                        for usuario in usuariosA:
+                            if usuario[0] == atualizar:
+                                usuario_encontrado = True
+                                
+                                novo_nome = input(f"Digite o novo nome de login (ou pressione Enter para manter '{usuario[0]}'): ")
+                                nova_senha = input("Digite a nova senha (ou pressione Enter para manter a senha atual): ")
+                                
+                                if novo_nome:
+                                    usuario[0] = novo_nome
+                                if nova_senha:
+                                    usuario[1] = nova_senha
+                                    
+                                print(f"Usuário '{atualizar}' atualizado com sucesso!")
+                                break
+
+                        if not usuario_encontrado:
+                            print("Usuário não encontrado.")
+
+                    elif opcao == '3': 
+                        apagar = input("Digite a ficha de login que deseja apagar: ")
+
+                        usuario_encontrado = False
+                        for usuario in usuariosA:
+                            if usuario[0] == apagar:
+                                usuariosA.remove(usuario)
+                                usuario_encontrado = True
+                                print(f"\nUsuário '{apagar}' removido com sucesso!")
+                                break
+
+                        if not usuario_encontrado:
+                            print("Usuário não encontrado.")
+
+                    elif opcao == '4':
+                         print(usuariosA)
+
+                    elif opcao == '5':
+                         break
+
+            elif opcao == '2':
+                while True:
+                    print("\nClientes\n")
+                    print("1.Cadastrar novo Cliente")
+                    print("2.Atualizar")
+                    print("3.Apagar (Administrador)")
+                    print("4.Consultar")
+                    print("5.Voltar ao 'Menu Cadastros'\n")
+
+                    opcao = input("\nSelecione uma opção:")
+                    if opcao == '1':
+                        nomeUsuario = input("Digite o nome do cliente: ")
+                        email = input("Digite email:")
+                        celular = input("Digite um telefeno/celular:")
+                        usuariosC.append([nomeUsuario,email,celular,'C'])
+                        print("Cliente Cadastrado!")
+
+                    elif opcao == '2':  
+                        atualizar = input("Digite o nome do Cliente que deseja atualizar: ")
+
+                        usuario_encontrado = False
+                        for usuario in usuariosC:
+                            if usuario[0] == atualizar:
+                                usuario_encontrado = True
+                                
+                                novo_nome = input(f"Digite o novo nome do Cliente (ou pressione Enter para manter '{usuario[0]}'): ")
+                                novo_email = input("Digite o novo email do Cliente (ou pressione Enter para manter): ")
+                                novo_celular = input("Digite o novo numero de telefone do Cliente (ou pressione Enter para manter): ")
+                                
+                                if novo_nome:
+                                    usuario[0] = novo_nome
+                                if novo_email:
+                                    usuario[1] = novo_email
+                                if novo_celular:
+                                    usuario[2] = novo_celular
+                                    
+                                print(f"Usuário '{atualizar}' atualizado com sucesso!")
+                                break
+
+                        if not usuario_encontrado:
+                            print("\nUsuário não encontrado.")    
+
+                    elif opcao == '3':
+                        apagar = input("Digite a ficha do cliente que deseja apagar: ")
+
+                        usuario_encontrado = False
+                        for usuario in usuariosC:
+                            if usuario[0] == apagar:
+                                usuariosC.remove(usuario)
+                                usuario_encontrado = True
+                                print(f"\nCliente '{apagar}' removido com sucesso!")
+                                break
+
+                        if not usuario_encontrado:
+                            print("\nUsuário não encontrado.")
+
+                    elif opcao == '4':
+                         print(usuariosC)
+                        
+                    elif opcao == '5':
+                         break
+                
+            elif opcao == '3':
+                 while True:
+                        print("\nPets\n")
+                        print("1 .Cadastrar novo Pet")
+                        print("2 .Atualizar")
+                        print("3 .Apagar (Administrador)")
+                        print("4 .Consultar")
+                        print("5 .Voltar ao 'Menu Cadastros'")
+                        
+                        opcao = input("\nSelecione uma opção: ")
+                        if opcao == '1':
+                            nomepet = input("Digite o nome do pet: ")
+                            datanascimento= input("Digite a data de nascimento:")
+                            nomeTutor = input("Digite o nome do tutor:")
+                            celular = input("Digite um telefeno/celular do Tutor:")
+                            pets.append([nomepet,datanascimento,nomeTutor,celular])
+                            print("Pet Cadastrado!")
+
+                        elif opcao == '2':  
+                            atualizar = input("Digite o nome do pet que deseja atualizar: ")
+
+                            usuario_encontrado = False
+                            for usuario in pets:
+                                if usuario[0] == atualizar:
+                                        usuario_encontrado = True
+                                        
+                                        novo_nome = input(f"Digite o novo nome de pet (ou pressione Enter para manter '{usuario[0]}'): ")
+                                        nova_datanascimento = input("Digite a nova data de nascimento (ou pressione Enter para manter): ")
+                                        novo_nomeTutor = input("Digite o novo nome do Tutor(ou pressione Enter para manter): ")
+                                        novo_celular = input("Digite o novo numero de celular(ou pressione Enter para manter): ")
+                                            
+                                        if novo_nome:
+                                                usuario[0] = novo_nome
+                                        if nova_datanascimento:
+                                                usuario[1] = nova_datanascimento
+                                        if novo_nomeTutor:
+                                                usuario[2] = novo_nomeTutor
+                                        if novo_celular:
+                                                usuario[3] = novo_celular
+                                                
+                                        print(f"Pet '{atualizar}' atualizado com sucesso!")
+                                        break
+
+                            if not usuario_encontrado:
+                                print("Pet não encontrado.")
+
+                        elif opcao == '3': 
+                            apagar = input("Digite a ficha do pet que deseja apagar: ")
+
+                            usuario_encontrado = False
+                            for usuario in pets:
+                                if usuario[0] == apagar:
+                                    pets.remove(usuario)
+                                    usuario_encontrado = True
+                                    print(f"\nFicha do pet '{apagar}' removido com sucesso!")
+                                    break
+
+                            if not usuario_encontrado:
+                                print("Pet não encontrado.")
+
+
+                        elif opcao == '4':
+                            print(pets)
+
+                        elif opcao == "5":
+                            break
+                
+            elif opcao == '4':
+                    while True:
+                        print("\nServiços (Administrador)\n")
+                        print("1.Cadastrar novo Serviço (Administradores)")
+                        print("2.Atualizar")
+                        print("3.Apagar (Administrador)")
+                        print("4.Consultar")
+                        print("5.Voltar ao 'Menu Cadastros'")
+
+                        opcao = input("\nSelecione uma opção: ")
+                        if opcao == '1':
+                            servico = input("Digite o o tipo de serviço que deseja cadastrar:")
+                            precoservico= input("Digite o preço do serviço:")
+                            servicos.append([servico, precoservico])
+                            print("Serviço cadastrado!")
+
+                        elif opcao == '2':
+                            atualizar = input("Digite o serviço que deseja atualizar: ")
+
+                            servico_encontrado = False
+                            for servico in servicos:
+                                if servico[0] == atualizar:
+                                        servico_encontrado = True
+                                        
+                                        novo_servico = input(f"Digite o novo serviço (ou pressione Enter para manter '{servico[0]}'): ")
+                                        novo_precoservico =input(f"Digite o novo preço do serviço (ou pressione Enter para manter): ")
+                                            
+                                        if novo_servico:
+                                                servico[0] = novo_servico
+                                        if novo_precoservico:
+                                                servico[1] = novo_precoservico
+                                                
+                                        print(f"\nServiço '{atualizar}' atualizado com sucesso!")
+                                        break
+                            if not servico_encontrado:
+                                print("Serviço não encontrado.")
+
+                        elif opcao == '3':
+                            apagar = input("Digite o serviço que deseja apagar: ")
+
+                            servico_encontrado = False
+                            for servico in servicos:
+                                if servico[0] == apagar:
+                                    servicos.remove(servico)
+                                    servico_encontrado = True
+                                    print(f"\nServiço '{apagar}' removido com sucesso!")
+                                    break
+
+                            if not servico_encontrado:
+                                print("Serviço não encontrado.")
+
+                        elif opcao == '4':
+                            print(servicos)
+
+                        elif opcao == '5':
+                            break
+
+            elif opcao == '5':
+                break
+    elif opcao == '2':
+        while True:
+            print("\nAtendimentos\n")
+            print("1.Iniciar")
+            print("2.Agendar")#Aula passada o senhor falou que nao iria cobrar agendamento
+            print("3.Remarcar")
+            print("4.Voltar ao menu principal")
+
+            opcao = input("\nSelecione uma opção:")
+        
+            if opcao == '1':
+                consulta = input("Digite o nome do pet:")
+                comportamento = input("Comportamento do pet:")
+                cuidados = input("Algum cuidado especial? alergico...:")
+                atendimento.append([consulta, comportamento, cuidados])
+                print("\nFinalizado com sucesso!!\n")
+
+            elif opcao == '2':
+                data = input("Digite a data desejada:")
+                datas.append([data])
+                print("Consulta marcada!")
+
+            elif opcao == '3':
+                atualizar = input("Digite a data que deseja remarcar: ")
+
+                for data in datas:
+                    if data[0] == atualizar:
+                                
+                            nova_data = input(f"Digite a nova data (ou pressione Enter para manter '{data[0]}'): ")
+                                
+                            if nova_data:
+                                data[0] = nova_data
+                                    
+                                print(f"data '{nova_data}' atualizado com sucesso!/n")
+                                break
+                else:
+                    print("data não encontrada!/n")
+   
+            elif opcao == '4':
+                 break 
+                
+
+    elif opcao == '3':
+        while True:
+            print("\nConsultas/Relatorios\n")
+            print("1.Consultas/Relatorios 1")
+            print("2.Consultas/Relatorios 2")
+            print("3.Voltar ao menu principal")
+
+            opcao = input ("\nSelecione uma opção:")
+
+            if opcao == '1':
+                 print("Atendimentos:")
+                 print(atendimento)
+
+            elif opcao =='2':
+                print("Datas:")
+                print(datas)
+
+            if opcao == '3':
+                 break
+
+    elif opcao == '4':
+        break
+
+    else:
+        print("\nOpção invalida!! Selecione novamente\n")
